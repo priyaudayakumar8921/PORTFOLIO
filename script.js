@@ -631,7 +631,7 @@ function renderTechLanguages() {
     const techLanguagesList = document.getElementById('tech-languages-list');
     if (!techLanguagesList) return;
     techLanguagesList.innerHTML = adminState.languages.map((skill) => `
-                <span class="px-4 py-2 bg-cardBg border border-cardBorder rounded-lg text-accent text-sm font-semibold">${skill}</span>
+                <span class="px-4 py-2 bg-cardBg border border-cardBorder rounded-lg text-accent text-sm font-semibold">${skill.name || skill}</span>
             `).join('');
 }
 
@@ -639,7 +639,7 @@ function renderTechFrameworks() {
     const techFrameworksList = document.getElementById('tech-frameworks-list');
     if (!techFrameworksList) return;
     techFrameworksList.innerHTML = adminState.frameworks.map((skill) => `
-                <span class="px-4 py-2 bg-cardBg border border-cardBorder rounded-lg text-accent text-sm font-semibold">${skill}</span>
+                <span class="px-4 py-2 bg-cardBg border border-cardBorder rounded-lg text-accent text-sm font-semibold">${skill.name || skill}</span>
             `).join('');
 }
 
