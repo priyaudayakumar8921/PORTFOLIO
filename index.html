@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priya Udayakumar | Portfolio</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        base: '#004643',          // Deep Teal
+                        baseAlt: '#003a37',       // Darker Teal for alternate sections
+                        accent: '#f0ede5',        // Off-White
+                        accentHover: '#dcd9d1',   // Darker Off-White
+                        textMain: '#f0ede5',      // Main Text
+                        textMuted: '#8cb3b0',     // Muted Teal/Gray for secondary text
+                        cardBg: 'rgba(240, 237, 229, 0.05)', // Transparent card bg
+                        cardBorder: 'rgba(240, 237, 229, 0.15)', // Card border
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-base text-textMuted font-sans antialiased overflow-x-hidden selection:bg-accent selection:text-base">
+
+    <!-- Splash Screen -->
+    <div id="splash-screen"
+        class="fixed inset-0 z-[100] flex items-center justify-center transition-transform duration-[600ms] ease-[cubic-bezier(0.76,0,0.24,1)] overflow-hidden"
+        style="background: radial-gradient(circle at center, #005a56 0%, #004643 100%);">
+        <div class="absolute top-8 left-8 md:top-12 md:left-12 flex flex-col gap-2">
+            <div class="w-12 h-[2px] bg-[#f0ede5]/40"></div>
+            <div class="text-[#f0ede5] text-lg md:text-2xl font-bold tracking-[0.4em] uppercase drop-shadow-md">
+                Priya U
+            </div>
+        </div>
+
+        <div id="splash-text" style="font-size: var(--dynamic-size);"
+            class="text-[#f0ede5] leading-none font-black tracking-tighter uppercase drop-shadow-[0_0_40px_rgba(240,237,229,0.25)] transition-all duration-300 ease-out transform scale-100 opacity-100 blur-0 w-full text-center px-4">
+            FRONTEND
+        </div>
+
+        <div
+            class="absolute bottom-12 right-8 md:bottom-16 md:right-12 text-[#f0ede5] text-lg md:text-2xl font-bold tracking-[0.4em] uppercase flex items-center gap-4 drop-shadow-md">
+            <span class="w-12 h-[2px] bg-[#f0ede5]/40 inline-block"></span>
+            Developer
+        </div>
+
+        <div class="absolute bottom-0 left-0 h-[3px] bg-[#f0ede5] shadow-[0_0_15px_#f0ede5]" id="splash-progress"
+            style="width: 0%; transition: width 600ms ease-out;"></div>
+    </div>
+
+    <!-- Contact Modal Overlay -->
+    <div id="contact-modal-overlay"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[110] hidden modal-overlay-enter items-center justify-center px-4">
+        <!-- Modal Content -->
+        <div id="contact-modal"
+            class="bg-base border border-cardBorder rounded-3xl w-full max-w-lg shadow-2xl relative overflow-hidden modal-enter flex flex-col max-h-[90vh]">
+            <!-- Decorative header accent -->
+            <div class="h-2 w-full bg-accent"></div>
+
+            <!-- Close Button -->
+            <button id="close-modal-btn"
+                class="absolute top-6 right-6 text-textMuted hover:text-accent transition-colors focus:outline-none z-10">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+
+            <!-- Form View -->
+            <div id="modal-form-view" class="p-8 sm:p-10 overflow-y-auto custom-scrollbar">
+                <h2 class="text-3xl font-black text-textMain uppercase tracking-wide mb-2">Get in Touch</h2>
+                <p class="text-textMuted text-sm mb-8">Fill out the form below and I'll get back to you as soon as
+                    possible.</p>
+
+                <!-- Formspree Integrated Form -->
+                <form id="contact-form" class="space-y-6">
+                    <div>
+                        <label for="name"
+                            class="block text-xs font-bold text-textMuted uppercase tracking-wider mb-2">Name</label>
+                        <input type="text" id="name" name="name" required data-fs-field
+                            class="w-full bg-cardBg border border-cardBorder rounded-xl px-4 py-3 text-textMain focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors placeholder:text-textMuted/50"
+                            placeholder="John Doe">
+                    </div>
+
+                    <div>
+                        <label for="email"
+                            class="block text-xs font-bold text-textMuted uppercase tracking-wider mb-2">Email</label>
+                        <input type="email" id="email" name="email" required data-fs-field
+                            class="w-full bg-cardBg border border-cardBorder rounded-xl px-4 py-3 text-textMain focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors placeholder:text-textMuted/50"
+                            placeholder="john@example.com">
+                    </div>
+
+                    <div>
+                        <label for="message"
+                            class="block text-xs font-bold text-textMuted uppercase tracking-wider mb-2">Message</label>
+                        <textarea id="message" name="message" rows="4" required data-fs-field
+                            class="w-full bg-cardBg border border-cardBorder rounded-xl px-4 py-3 text-textMain focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors placeholder:text-textMuted/50 resize-none"
+                            placeholder="Hello Priya, I'd like to discuss..."></textarea>
+                    </div>
+
+                    <button type="submit" data-fs-submit-btn
+                        class="w-full bg-accent text-base font-bold py-3.5 rounded-xl hover:bg-accentHover transition-colors duration-300 flex justify-center items-center gap-2 mt-4 uppercase tracking-wide text-sm">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+
+                    <!-- Formspree Error Display -->
+                    <div data-fs-error class="text-red-400 text-sm font-medium mt-2 text-center"></div>
+                </form>
+            </div>
+
+            <!-- Success Message View (Hidden by default) -->
+            <div id="success-message" class="hidden p-8 sm:p-10 flex-col items-center justify-center min-h-[450px]">
+                <div
+                    class="w-24 h-24 bg-accent/10 rounded-full flex items-center justify-center mb-6 border-4 border-accent/20">
+                    <i class="fas fa-check text-5xl text-accent"></i>
+                </div>
+                <h3 class="text-3xl font-black text-textMain uppercase tracking-wide mb-3 text-center">Message Sent!
+                </h3>
+                <p class="text-textMuted text-center mb-10 text-lg">Thank you for reaching out.<br>I'll get back to you
+                    shortly.</p>
+                <button onclick="closeModal()"
+                    class="w-full sm:w-auto bg-accent text-base px-10 py-3.5 rounded-full font-bold hover:bg-accentHover transition-all duration-300 uppercase tracking-wide text-sm">
+                    Back to Portfolio
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resume Modal Overlay -->
+    <div id="resume-modal-overlay"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[110] hidden modal-overlay-enter items-center justify-center px-4 py-8">
+        <div id="resume-modal"
+            class="bg-base border border-cardBorder rounded-3xl w-full max-w-4xl shadow-2xl relative overflow-hidden modal-enter flex flex-col max-h-full">
+            <div class="flex justify-between items-center p-4 border-b border-cardBorder bg-baseAlt">
+                <h2 class="text-xl font-bold text-textMain uppercase tracking-wide px-2">My Resume</h2>
+                <button onclick="closeResumeModal()"
+                    class="text-textMuted hover:text-accent transition-colors focus:outline-none">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+
+            <div class="overflow-auto custom-scrollbar p-2 sm:p-6 flex justify-start md:justify-center bg-[#002b29]">
+                <img src="https://i.ibb.co/tTb1kxp8/Resume-20260411-192831-0000.png" alt="Resume" border="0"
+                    class="min-w-[800px] w-full max-w-none h-auto rounded-lg shadow-lg">
+            </div>
+
+            <div
+                class="p-4 sm:p-6 border-t border-cardBorder bg-baseAlt flex flex-col sm:flex-row justify-center items-center gap-4">
+                <button onclick="window.open('https://i.ibb.co/tTb1kxp8/Resume-20260411-192831-0000.png', '_blank')"
+                    class="w-full sm:w-auto border-2 border-accent text-accent px-8 py-3 rounded-full font-bold hover:bg-accent hover:text-base transition-all duration-300 uppercase tracking-wide text-sm flex items-center justify-center gap-2 focus:outline-none">
+                    <i class="fas fa-external-link-alt"></i> Open Full Size
+                </button>
+                <button onclick="downloadResume()"
+                    class="w-full sm:w-auto bg-accent text-base px-8 py-3 rounded-full font-bold hover:bg-accentHover transition-all duration-300 uppercase tracking-wide text-sm flex items-center justify-center gap-2 focus:outline-none shadow-lg shadow-accent/20">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-xl md:text-2xl font-black tracking-tight text-accent uppercase">
+                        Priya U.
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home"
+                            class="hover:text-accent text-accent px-3 py-2 text-sm font-semibold transition-colors">Home</a>
+                        <a href="#skills"
+                            class="hover:text-accent text-textMuted px-3 py-2 text-sm font-medium transition-colors">Skills
+                            & Edu</a>
+                        <a href="#projects"
+                            class="hover:text-accent text-textMuted px-3 py-2 text-sm font-medium transition-colors">Projects</a>
+                        <a href="#contact"
+                            class="hover:text-accent text-textMuted px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-accent focus:outline-none p-2 -mr-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-baseAlt border-t border-cardBorder absolute left-0 top-full w-full shadow-2xl">
+            <div class="px-4 pt-3 pb-5 space-y-2">
+                <a href="#home" class="mobile-link block bg-accent/10 text-accent px-4 py-3 rounded-lg text-base font-bold shadow-sm">Home</a>
+                <a href="#skills" class="mobile-link block text-textMuted hover:bg-cardBg hover:text-accent px-4 py-3 rounded-lg text-base font-medium transition-colors">Skills & Edu</a>
+                <a href="#projects" class="mobile-link block text-textMuted hover:bg-cardBg hover:text-accent px-4 py-3 rounded-lg text-base font-medium transition-colors">Projects</a>
+                <a href="#contact" class="mobile-link block text-textMuted hover:bg-cardBg hover:text-accent px-4 py-3 rounded-lg text-base font-medium transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Right-side Social Pull-out Menu -->
+    <div id="social-menu-container" class="fixed right-0 top-[35%] md:top-1/2 -translate-y-1/2 z-[90] flex items-center transition-transform duration-500 translate-x-full">
+        <!-- Toggle Button (visible when closed) -->
+        <button id="social-menu-toggle" class="absolute -left-10 w-10 h-14 bg-baseAlt/60 backdrop-blur-md border border-r-0 border-cardBorder rounded-l-full flex items-center justify-center text-textMuted hover:text-accent shadow-[-5px_0_20px_rgba(0,0,0,0.3)] transition-all focus:outline-none">
+            <i class="fas fa-share-alt text-lg pr-1"></i>
+        </button>
+
+        <!-- Menu Content -->
+        <div class="bg-baseAlt/70 backdrop-blur-lg border border-r-0 border-cardBorder rounded-l-full py-6 pl-4 pr-3 shadow-[-10px_0_30px_rgba(0,0,0,0.4)] relative">
+            <div class="grid grid-cols-2 grid-rows-3 gap-2 md:gap-3 place-items-center">
+                <!-- GitHub -->
+                <a href="https://github.com/priyaudayakumar8921" target="_blank" class="col-start-2 row-start-1 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white border border-white flex items-center justify-center text-black hover:bg-gray-200 hover:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.4)]" title="GitHub">
+                    <i class="fab fa-github text-base md:text-lg"></i>
+                </a>
+                
+                <!-- WhatsApp -->
+                <a href="https://wa.me/919074242334" target="_blank" class="col-start-1 row-start-2 -mr-2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#25D366]/80 border border-[#25D366] flex items-center justify-center text-white hover:bg-[#25D366] hover:scale-110 transition-all duration-300 relative z-10 shadow-[0_0_10px_rgba(37,211,102,0.3)]" title="WhatsApp">
+                    <i class="fab fa-whatsapp text-lg md:text-xl"></i>
+                </a>
+                
+                <!-- Close button in the middle -->
+                <button id="social-menu-close" class="col-start-2 row-start-2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-red-500/80 border border-red-500 flex items-center justify-center text-white hover:bg-red-500 hover:scale-110 transition-all duration-300 focus:outline-none shadow-[0_0_10px_rgba(239,68,68,0.3)]" title="Close">
+                    <i class="fas fa-times text-base md:text-lg"></i>
+                </button>
+                
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/priya-udayakumar-7453762b5?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="col-start-2 row-start-3 w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#0077b5]/80 border border-[#0077b5] flex items-center justify-center text-white hover:bg-[#0077b5] hover:scale-110 transition-all duration-300 shadow-[0_0_10px_rgba(0,119,181,0.3)]" title="LinkedIn">
+                    <i class="fab fa-linkedin-in text-base md:text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compact Hero & About Section -->
+    <section id="home" class="pt-20 pb-4 min-h-[100dvh] flex items-center justify-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="flex flex-col md:flex-row-reverse items-center justify-between gap-6 md:gap-12">
+
+                <!-- Profile Image -->
+                <div class="w-full md:w-2/5 flex justify-center animate-on-scroll">
+                    <div class="relative w-40 h-40 sm:w-48 sm:h-48 md:w-80 md:h-80">
+                        <div
+                            class="absolute inset-0 bg-accent rounded-full translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4 opacity-20">
+                        </div>
+                        <div
+                            class="absolute inset-0 rounded-full overflow-hidden border-2 md:border-4 border-accent z-10 shadow-2xl">
+                            <img src="https://i.ibb.co/gML5gxjL/IMG-20260411-195844.jpg" alt="Priya Udayakumar"
+                                class="w-full h-full object-cover object-top">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div
+                    class="w-full md:w-3/5 text-center md:text-left animate-on-scroll flex flex-col items-center md:items-start">
+                    <p class="text-textMuted font-bold tracking-widest mb-1.5 md:mb-3 uppercase text-xs md:text-sm">
+                        Welcome to my portfolio</p>
+                    <h1
+                        class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-textMain mb-1.5 md:mb-4 leading-tight tracking-tight uppercase">
+                        Hi, I'm <br class="hidden md:block" /> Priya
+                    </h1>
+
+                    <h2 class="text-base sm:text-lg md:text-2xl text-white font-medium mb-3 md:mb-6 h-6 md:h-8">
+                        <span id="typewriter"></span><span class="cursor-blink">|</span>
+                    </h2>
+
+                    <p
+                        class="text-textMuted max-w-lg mb-6 md:mb-8 leading-snug md:leading-relaxed text-[13px] sm:text-sm md:text-lg">
+                        I'm a Final Year B.Tech CSE student passionate about building scalable, responsive web
+                        applications and exploring AI. My goal is to craft user-friendly software that solves real
+                        problems.
+                    </p>
+                    <div
+                        class="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto max-w-[320px] sm:max-w-none">
+                        <a href="#projects"
+                            class="w-full sm:w-auto bg-accent text-base px-5 py-2.5 md:py-3.5 rounded-full font-bold hover:bg-accentHover hover:scale-105 transition-all duration-300 text-center uppercase tracking-wide text-xs md:text-sm">
+                            View Work
+                        </a>
+
+                        <div class="flex flex-row gap-2 w-full sm:w-auto justify-center">
+                            <button onclick="openResumeModal()"
+                                class="flex-1 sm:flex-none border-2 border-accent text-accent px-2 sm:px-4 py-2.5 md:py-3.5 rounded-full font-bold hover:bg-accent hover:text-base transition-all duration-300 text-center uppercase tracking-wide text-[10px] sm:text-xs md:text-sm focus:outline-none whitespace-nowrap">
+                                Resume
+                            </button>
+
+                            <a href="certifications.html"
+                                class="flex-1 sm:flex-none border-2 border-accent text-accent px-2 sm:px-4 py-2.5 md:py-3.5 rounded-full font-bold hover:bg-accent hover:text-base transition-all duration-300 text-center uppercase tracking-wide text-[10px] sm:text-xs md:text-sm focus:outline-none whitespace-nowrap">
+                                Certifications
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Compact Skills & Education Section -->
+    <section id="skills" class="py-16 bg-baseAlt border-y border-cardBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+                <div class="animate-on-scroll">
+                    <h2 class="text-2xl font-bold text-textMain mb-6 flex items-center gap-3 uppercase tracking-wide">
+                        <i class="fas fa-code text-accent"></i> Tech Stack
+                    </h2>
+
+                    <div class="mb-6">
+                        <p class="text-sm text-textMuted uppercase tracking-wider mb-3">Languages</p>
+                        <div id="tech-languages-list" class="flex flex-wrap gap-2"></div>
+                    </div>
+
+                    <div>
+                        <p class="text-sm text-textMuted uppercase tracking-wider mb-3">Frameworks & Tools</p>
+                        <div id="tech-frameworks-list" class="flex flex-wrap gap-2"></div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll">
+                    <h2 class="text-2xl font-bold text-textMain mb-6 flex items-center gap-3 uppercase tracking-wide">
+                        <i class="fas fa-graduation-cap text-accent"></i> Education
+                    </h2>
+                    <div id="education-list" class="space-y-6"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-base">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 animate-on-scroll">
+                <h2 class="text-3xl font-black text-textMain uppercase tracking-wide mb-2">Projects</h2>
+                <div class="w-12 h-1 bg-accent rounded-full"></div>
+            </div>
+
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+
+            <div class="mt-12 text-center animate-on-scroll">
+                <a href="projects.html"
+                    class="inline-block border-2 border-accent text-accent px-8 py-3.5 rounded-full font-bold hover:bg-accent hover:text-base transition-all duration-300 uppercase tracking-wide text-sm focus:outline-none shadow-lg shadow-accent/10">
+                    See More Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-baseAlt border-t border-cardBorder py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll">
+            <h2 class="text-3xl font-black text-textMain uppercase tracking-wide mb-6">Let's Connect</h2>
+            <p class="text-textMuted mb-8 max-w-lg mx-auto">Currently open for new opportunities and collaborations.
+                Feel free to reach out via email or connect on social media.</p>
+
+            <div class="flex justify-center gap-6 mb-12">
+                <button onclick="openModal()"
+                    class="w-14 h-14 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center text-accent hover:bg-accent hover:text-base transition-all duration-300 hover:-translate-y-1 focus:outline-none">
+                    <i class="fas fa-envelope text-xl"></i>
+                </button>
+                <a href="https://github.com/priyaudayakumar8921" target="_blank"
+                    class="w-14 h-14 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center text-accent hover:bg-accent hover:text-base transition-all duration-300 hover:-translate-y-1">
+                    <i class="fab fa-github text-xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/priya-udayakumar-7453762b5?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                    target="_blank"
+                    class="w-14 h-14 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center text-accent hover:bg-accent hover:text-base transition-all duration-300 hover:-translate-y-1">
+                    <i class="fab fa-linkedin-in text-xl"></i>
+                </a>
+                <a href="https://www.instagram.com/_pria_u?igsh=MWI1aTV1OWlqaWE3Yg==" target="_blank"
+                    class="w-14 h-14 rounded-full bg-cardBg border border-cardBorder flex items-center justify-center text-accent hover:bg-accent hover:text-base transition-all duration-300 hover:-translate-y-1">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+            </div>
+
+            <div class="border-t border-cardBorder pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-textMuted text-sm font-medium">
+                    &copy; 2024 Priya Udayakumar. All rights reserved.
+                </p>
+                <div class="flex gap-8">
+                    <a href="#home"
+                        class="text-textMuted hover:text-accent text-sm font-semibold uppercase tracking-wider transition-colors">Top
+                        &uarr;</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- (Removed individual floating buttons in favor of side menu) -->
+
+    <!-- Toast Notification -->
+    <div id="toast-notification"
+        class="fixed top-6 right-6 bg-accent text-base font-bold px-6 py-3 rounded-xl shadow-2xl transform -translate-y-24 opacity-0 transition-all duration-300 z-[120] flex items-center gap-3 pointer-events-none">
+        <i class="fas fa-check-circle text-xl"></i>
+        <span id="toast-message">Downloaded successfully!</span>
+    </div>
+
+    <div id="admin-overlay"
+        class="fixed inset-0 z-[130] hidden bg-black/80 backdrop-blur-sm flex items-start justify-center p-2 sm:p-6 overflow-auto">
+        <div class="bg-base border border-cardBorder rounded-3xl w-full max-w-5xl shadow-2xl relative overflow-hidden">
+            <div class="h-3 w-full bg-accent"></div>
+            <div class="flex items-start justify-between gap-4 p-4 sm:p-6">
+                <div>
+                    <h2 class="text-3xl font-black text-textMain uppercase tracking-wide mb-2">Developer Backdoor</h2>
+                    <p class="text-textMuted text-sm max-w-2xl">Use the admin panel to manage projects and the tech
+                        stack dynamically.</p>
+                </div>
+                <button id="close-admin-btn" class="text-textMuted hover:text-accent focus:outline-none">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+
+            <div class="border-t border-cardBorder"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 p-4 sm:p-6">
+                <section class="space-y-4">
+                    <div class="flex items-center justify-between gap-4">
+                        <h3 class="text-xl font-bold text-textMain uppercase tracking-wide">Projects</h3>
+                        <button id="add-project-btn"
+                            class="bg-accent text-base text-black font-bold px-4 py-2 rounded-full hover:bg-accentHover transition-all duration-300">Add
+                            Project</button>
+                    </div>
+                    <div id="admin-project-items" class="space-y-4"></div>
+                </section>
+
+                <section class="space-y-4">
+                    <div class="flex items-center justify-between gap-4">
+                        <h3 class="text-xl font-bold text-textMain uppercase tracking-wide">Languages</h3>
+                        <button id="add-language-btn"
+                            class="bg-accent text-base text-black font-bold px-4 py-2 rounded-full hover:bg-accentHover transition-all duration-300">Add
+                            Language</button>
+                    </div>
+                    <div id="admin-language-items" class="space-y-3"></div>
+                </section>
+
+                <section class="space-y-4">
+                    <div class="flex items-center justify-between gap-4">
+                        <h3 class="text-xl font-bold text-textMain uppercase tracking-wide">Frameworks & Tools</h3>
+                        <button id="add-framework-btn"
+                            class="bg-accent text-base text-black font-bold px-4 py-2 rounded-full hover:bg-accentHover transition-all duration-300">Add
+                            Tool</button>
+                    </div>
+                    <div id="admin-framework-items" class="space-y-3"></div>
+                </section>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 p-4 sm:p-6">
+                <section class="space-y-4">
+                    <div class="flex items-center justify-between gap-4">
+                        <h3 class="text-xl font-bold text-textMain uppercase tracking-wide">Education</h3>
+                        <button id="add-education-btn"
+                            class="bg-accent text-base text-black font-bold px-4 py-2 rounded-full hover:bg-accentHover transition-all duration-300">Add
+                            Education</button>
+                    </div>
+                    <div id="admin-education-items" class="space-y-4"></div>
+                </section>
+
+                <section class="space-y-4">
+                    <div class="flex items-center justify-between gap-4">
+                        <h3 class="text-xl font-bold text-textMain uppercase tracking-wide">Certifications</h3>
+                        <button id="add-certification-btn"
+                            class="bg-accent text-base text-black font-bold px-4 py-2 rounded-full hover:bg-accentHover transition-all duration-300">Add
+                            Certification</button>
+                    </div>
+                    <div id="admin-certification-items" class="space-y-4"></div>
+                </section>
+
+                <section class="space-y-4">
+                    <h3 class="text-xl font-bold text-textMain uppercase tracking-wide">Settings</h3>
+                    <div class="admin-section-card rounded-3xl border border-cardBorder p-4 space-y-4">
+                        <label class="text-sm text-textMuted font-bold">Resume Link (PDF/Image URL)</label>
+                        <input id="admin-resume-input" class="admin-input w-full px-4 py-3 rounded-xl text-textMain outline-none" placeholder="https://...">
+                    </div>
+                </section>
+            </div>
+
+            <div
+                class="border-t border-cardBorder p-4 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-4 bg-baseAlt">
+                <p class="text-textMuted text-sm text-center md:text-left">Changes apply instantly to the visible portfolio while this tab
+                    remains open. Click Save All Changes to persist to database.</p>
+                <div class="flex gap-4 w-full md:w-auto">
+                    <button id="admin-save-all-btn"
+                        class="bg-[#25D366] text-white font-bold px-6 py-3 rounded-full hover:bg-green-500 transition-all duration-300 shadow-lg shadow-green-500/20 w-full md:w-auto">Save All Changes</button>
+                    <button id="close-admin-bottom-btn"
+                        class="bg-accent text-base text-black font-bold px-6 py-3 rounded-full hover:bg-accentHover transition-all duration-300 w-full md:w-auto">Close
+                        Admin</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formspree Ajax SDK -->
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+
+    <script src="script.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const socialMenuContainer = document.getElementById('social-menu-container');
+            const socialMenuToggle = document.getElementById('social-menu-toggle');
+            const socialMenuClose = document.getElementById('social-menu-close');
+
+            if(socialMenuToggle && socialMenuClose) {
+                socialMenuToggle.addEventListener('click', () => {
+                    socialMenuContainer.classList.remove('translate-x-full');
+                    socialMenuToggle.classList.add('opacity-0', 'pointer-events-none');
+                });
+
+                socialMenuClose.addEventListener('click', () => {
+                    socialMenuContainer.classList.add('translate-x-full');
+                    socialMenuToggle.classList.remove('opacity-0', 'pointer-events-none');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

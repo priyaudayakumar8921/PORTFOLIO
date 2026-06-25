@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priya Udayakumar | All Projects</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        base: '#004643',          // Deep Teal
+                        baseAlt: '#003a37',       // Darker Teal for alternate sections
+                        accent: '#f0ede5',        // Off-White
+                        accentHover: '#dcd9d1',   // Darker Off-White
+                        textMain: '#f0ede5',      // Main Text
+                        textMuted: '#8cb3b0',     // Muted Teal/Gray for secondary text
+                        cardBg: 'rgba(240, 237, 229, 0.05)', // Transparent card bg
+                        cardBorder: 'rgba(240, 237, 229, 0.15)', // Card border
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #003a37;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4a7c79;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f0ede5;
+        }
+
+        .glass-nav {
+            background: rgba(0, 70, 67, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(240, 237, 229, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-base text-textMuted font-sans antialiased overflow-x-hidden selection:bg-accent selection:text-base">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html#home"
+                        class="text-xl md:text-2xl font-black tracking-tight text-accent uppercase">
+                        Priya U.
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html#home"
+                            class="hover:text-accent text-textMuted px-3 py-2 text-sm font-semibold transition-colors">Home</a>
+                        <a href="index.html#skills"
+                            class="hover:text-accent text-textMuted px-3 py-2 text-sm font-medium transition-colors">Skills
+                            & Edu</a>
+                        <a href="#" class="text-accent px-3 py-2 text-sm font-bold transition-colors">Projects</a>
+                        <a href="index.html#contact"
+                            class="hover:text-accent text-textMuted px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-accent focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-baseAlt border-t border-cardBorder absolute left-0 top-full w-full shadow-2xl">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="index.html#home"
+                    class="mobile-link block text-accent px-3 py-3 rounded-lg text-base font-medium">Home</a>
+                <a href="index.html#skills"
+                    class="mobile-link block text-textMuted px-3 py-3 rounded-lg text-base font-medium">Skills & Edu</a>
+                <a href="#"
+                    class="mobile-link block text-textMuted px-3 py-3 rounded-lg text-base font-medium">Projects</a>
+                <a href="index.html#contact"
+                    class="mobile-link block text-textMuted px-3 py-3 rounded-lg text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Section -->
+    <section id="projects" class="pt-32 pb-16 min-h-screen bg-base">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12 animate-on-scroll">
+                <h2 class="text-3xl font-black text-textMain uppercase tracking-wide mb-2">All Projects</h2>
+                <div class="w-12 h-1 bg-accent rounded-full"></div>
+                <p class="mt-4 text-textMuted text-lg max-w-2xl">A complete collection of my software development
+                    projects.</p>
+            </div>
+
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Projects will be rendered here dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-baseAlt border-t border-cardBorder py-8">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-textMuted text-sm font-medium">
+                &copy; 2026 Priya Udayakumar. All rights reserved.
+            </p>
+            <div class="flex gap-8">
+                <a href="#"
+                    class="text-textMuted hover:text-accent text-sm font-semibold uppercase tracking-wider transition-colors">Top
+                    &uarr;</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Right-side Social Pull-out Menu -->
+    <div id="social-menu-container"
+        class="fixed right-0 top-[35%] md:top-1/2 -translate-y-1/2 z-[90] flex items-center transition-transform duration-500 translate-x-full">
+        <!-- Toggle Button (visible when closed) -->
+        <button id="social-menu-toggle"
+            class="absolute -left-10 w-10 h-14 bg-baseAlt/60 backdrop-blur-md border border-r-0 border-cardBorder rounded-l-full flex items-center justify-center text-textMuted hover:text-accent shadow-[-5px_0_20px_rgba(0,0,0,0.3)] transition-all focus:outline-none">
+            <i class="fas fa-share-alt text-lg pr-1"></i>
+        </button>
+
+        <!-- Menu Content -->
+        <div
+            class="bg-baseAlt/70 backdrop-blur-lg border border-r-0 border-cardBorder rounded-l-full py-6 pl-4 pr-3 shadow-[-10px_0_30px_rgba(0,0,0,0.4)] relative">
+            <div class="grid grid-cols-2 grid-rows-3 gap-2 md:gap-3 place-items-center">
+                <!-- GitHub -->
+                <a href="https://github.com/priyaudayakumar8921" target="_blank"
+                    class="col-start-2 row-start-1 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white border border-white flex items-center justify-center text-black hover:bg-gray-200 hover:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.4)]"
+                    title="GitHub">
+                    <i class="fab fa-github text-base md:text-lg"></i>
+                </a>
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/919074242334" target="_blank"
+                    class="col-start-1 row-start-2 -mr-2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#25D366]/80 border border-[#25D366] flex items-center justify-center text-white hover:bg-[#25D366] hover:scale-110 transition-all duration-300 relative z-10 shadow-[0_0_10px_rgba(37,211,102,0.3)]"
+                    title="WhatsApp">
+                    <i class="fab fa-whatsapp text-lg md:text-xl"></i>
+                </a>
+
+                <!-- Close button in the middle -->
+                <button id="social-menu-close"
+                    class="col-start-2 row-start-2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-red-500/80 border border-red-500 flex items-center justify-center text-white hover:bg-red-500 hover:scale-110 transition-all duration-300 focus:outline-none shadow-[0_0_10px_rgba(239,68,68,0.3)]"
+                    title="Close">
+                    <i class="fas fa-times text-base md:text-lg"></i>
+                </button>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/priya-udayakumar-7453762b5?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+                    target="_blank"
+                    class="col-start-2 row-start-3 w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#0077b5]/80 border border-[#0077b5] flex items-center justify-center text-white hover:bg-[#0077b5] hover:scale-110 transition-all duration-300 shadow-[0_0_10px_rgba(0,119,181,0.3)]"
+                    title="LinkedIn">
+                    <i class="fab fa-linkedin-in text-base md:text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const socialMenuContainer = document.getElementById('social-menu-container');
+            const socialMenuToggle = document.getElementById('social-menu-toggle');
+            const socialMenuClose = document.getElementById('social-menu-close');
+
+            if (socialMenuToggle && socialMenuClose) {
+                socialMenuToggle.addEventListener('click', () => {
+                    socialMenuContainer.classList.remove('translate-x-full');
+                    socialMenuToggle.classList.add('opacity-0', 'pointer-events-none');
+                });
+
+                socialMenuClose.addEventListener('click', () => {
+                    socialMenuContainer.classList.add('translate-x-full');
+                    socialMenuToggle.classList.remove('opacity-0', 'pointer-events-none');
+                });
+            }
+        });
+    </script>
+
+    <!-- Supabase SDK & Logic -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+    <script>
+        const SUPABASE_URL = atob('aHR0cHM6Ly9peXFtcXpoanhxbXN3dWZsbXNlei5zdXBhYmFzZS5jbw==');
+        const SUPABASE_ANON_KEY = atob('ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SnBjM01pT2lKemRYQmhZbUZ6WlNJc0luSmxaaUk2SW1sNWNXMXhlbWhxZUhGdGMzZDFabXh0YzJWNklpd2ljbTlzWlNJNkltRnViMjRpTENKcFlYUWlPakUzT0RJek9UWXpPRElzSW1WNGNDSTZNakE1TnprM01qTTRNbjAuMi1YeDN3SDBacXBJTkJnZ2wyTGNOSXJrVWxCNElZM1ZUeHhrNzFocUJsUQ==');
+
+        let supabaseClient = null;
+        try {
+            if (window.supabase && typeof window.supabase.createClient === 'function') {
+                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            }
+        } catch (error) {
+            console.warn('Supabase initialization failed:', error);
+        }
+
+        const fallbackProjects = [];
+
+        async function loadAndRenderProjects() {
+            let projectsData = fallbackProjects;
+
+            function render(data) {
+                const grid = document.getElementById('projects-grid');
+                grid.innerHTML = data.map((project) => `
+                    <div class="bg-cardBg rounded-2xl overflow-hidden border border-cardBorder group hover:-translate-y-1 transition-all duration-300 animate-on-scroll flex flex-col h-full">
+                        <div class="h-48 overflow-hidden bg-baseAlt relative">
+                            <img src="${project.image}" alt="${project.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100">
+                        </div>
+                        <div class="p-6 flex flex-col h-[calc(100%-12rem)]">
+                            <h3 class="text-xl font-bold text-textMain mb-2 group-hover:text-accent">${project.title}</h3>
+                            <p class="text-textMuted text-sm mb-4">${project.description}</p>
+                            <div class="flex flex-wrap gap-2 mb-4">${(project.tags || []).map((tag) => `<span class="text-accent text-xs font-semibold px-2 py-1 bg-accent/10 rounded">${tag}</span>`).join('')}</div>
+                            
+                            <div class="mt-auto flex items-center gap-3 pt-4 border-t border-cardBorder/50">
+                                ${project.github_link ? `<a href="${project.github_link}" target="_blank" class="flex items-center justify-center bg-baseAlt hover:bg-accent/20 text-textMain hover:text-accent rounded-full p-2 transition-colors"><i class="fab fa-github text-xl"></i></a>` : ''}
+                                ${project.demo_link ? `<a href="${project.demo_link}" target="_blank" class="flex-1 text-center bg-accent text-black font-bold py-2 rounded-xl hover:bg-accentHover transition-colors text-sm">Live Demo <i class="fas fa-external-link-alt ml-1"></i></a>` : ''}
+                                ${!project.github_link && !project.demo_link ? `<a href="#" class="inline-flex items-center gap-2 text-accent text-sm font-bold hover:text-white transition-colors"><i class="fab fa-github text-lg"></i> View on GitHub</a>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('opacity-100', 'translate-y-0');
+                            entry.target.classList.remove('opacity-0', 'translate-y-8');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                grid.querySelectorAll('.animate-on-scroll').forEach((el) => {
+                    el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out');
+                    observer.observe(el);
+                });
+            }
+
+            // Initial render immediately
+            render(projectsData);
+
+            if (supabaseClient) {
+                try {
+                    const { data, error } = await supabaseClient
+                        .from('projects')
+                        .select('title,description,tags,image,github_link,demo_link,created_at')
+                        .order('created_at', { ascending: true });
+
+                    if (!error && Array.isArray(data)) {
+                        projectsData = data.map((p) => ({
+                            ...p,
+                            tags: Array.isArray(p.tags) ? p.tags : (typeof p.tags === 'string' ? p.tags.split(',').map(t => t.trim()) : [])
+                        }));
+                        render(projectsData); // Re-render with fetched data
+                    }
+                } catch (error) {
+                    console.warn('Supabase load failed, keeping fallback.', error);
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadAndRenderProjects);
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        if (btn && mobileMenu) {
+            btn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

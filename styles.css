@@ -1,0 +1,90 @@
+/* Custom Scrollbar for Dark Teal Theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #003a37;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a7c79;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f0ede5;
+        }
+        
+        /* Typing animation cursor */
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+            color: #ffffff; /* Pure white cursor */
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        
+        /* Glassmorphism Navbar */
+        .glass-nav {
+            background: rgba(0, 70, 67, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(240, 237, 229, 0.1);
+        }
+
+        /* Modal Transitions */
+        .modal-enter {
+            opacity: 0;
+            transform: scale(0.95) translateY(20px);
+        }
+        .modal-enter-active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            transition: opacity 300ms ease-out, transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .modal-exit {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        .modal-exit-active {
+            opacity: 0;
+            transform: scale(0.95) translateY(20px);
+            transition: opacity 200ms ease-in, transform 200ms ease-in;
+        }
+        
+        .modal-overlay-enter { opacity: 0; }
+        .modal-overlay-enter-active { opacity: 1; transition: opacity 300ms ease-out; }
+        .modal-overlay-exit { opacity: 1; }
+        .modal-overlay-exit-active { opacity: 0; transition: opacity 200ms ease-in; }
+
+        #admin-overlay {
+            animation: fadeIn 250ms ease-out forwards;
+        }
+
+        #admin-overlay.hidden {
+            display: none;
+        }
+
+        .admin-input {
+            background: rgba(240,237,229,0.05);
+            border: 1px solid rgba(240,237,229,0.15);
+            color: #f0ede5;
+        }
+
+        .admin-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1rem;
+            border-radius: 999px;
+            border: 1px solid rgba(240,237,229,0.15);
+            background: rgba(240,237,229,0.08);
+        }
+
+        .admin-section-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(240,237,229,0.12);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0 }
+            to { opacity: 1 }
+        }
